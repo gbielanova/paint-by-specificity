@@ -15,3 +15,9 @@ The player is offered to paint with colors a black & white image similar to 'pai
 - under expressions user can see weight and explanations how they were calculated;
 - area colored with opposite to correct color.
 
+## How to run
+### Install packages
+Run `npm install`
+
+### Start app
+Run `npm start`
