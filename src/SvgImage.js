@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import './SvgImage.css';
 
 class SvgImage extends Component {
-
     componentDidMount() {
-        function handleClick(el) {
-            el.style.fill = "#000";
+        const els = document.querySelector('.svg').querySelectorAll('g, rect');
+        [...els].forEach((el) => {
+            const paths = el.querySelectorAll('path, circle');
+            [...paths].forEach(path => {
+                path.style.fill = '#000';
+                el.style.oldFill = el.style.fill;
+            });
+            el.style.oldFill = el.style.fill;
+            el.style.fill = '#000';
             el.style.stroke = '#fff';
             el.style.strokeWidth = '2px';
+        });
+
+        function handleClick(el) {
+            el.style = '';
         }
 
         const pic = document.querySelector('.svg');

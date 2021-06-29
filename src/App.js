@@ -3,7 +3,7 @@ import SvgImage from './SvgImage';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <SvgImage />
     </div>
   );
