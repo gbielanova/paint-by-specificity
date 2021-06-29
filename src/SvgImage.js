@@ -6,6 +6,8 @@ class SvgImage extends Component {
     componentDidMount() {
         function handleClick(el) {
             el.style.fill = "#000";
+            el.style.stroke = '#fff';
+            el.style.strokeWidth = '2px';
         }
 
         const pic = document.querySelector('.svg');
