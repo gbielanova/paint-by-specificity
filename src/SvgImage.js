@@ -3,21 +3,28 @@ import './SvgImage.css';
 
 class SvgImage extends Component {
     componentDidMount() {
+        const elementsPerColor = {};
         const els = document.querySelector('.svg').querySelectorAll('g, rect');
+
         [...els].forEach((el) => {
             const paths = el.querySelectorAll('path, circle');
             [...paths].forEach(path => {
                 path.style.fill = '#000';
-                el.style.oldFill = el.style.fill;
+                const color = path.getAttribute('fill');
+                Object.keys(elementsPerColor).includes(color) ? elementsPerColor[color] = [...elementsPerColor[color], path] : elementsPerColor[color] = [path];
             });
-            el.style.oldFill = el.style.fill;
+            const color = el.getAttribute('fill');
+            Object.keys(elementsPerColor).includes(color) ? elementsPerColor[color] = [...elementsPerColor[color], el] : elementsPerColor[color] = [el];
             el.style.fill = '#000';
             el.style.stroke = '#fff';
             el.style.strokeWidth = '2px';
         });
 
         function handleClick(el) {
-            el.style = '';
+            elementsPerColor[el.getAttribute('fill')].forEach(element => {
+                element.style = '';
+                element.style.strokeWidth = '0px';
+            })
         }
 
         const pic = document.querySelector('.svg');
